@@ -7,43 +7,6 @@ namespace Mihu_Daniela_Lab2
 {
     class DoughnutMachine
     {
-        public enum DoughnutType
-        {
-            Glazed,
-            Sugar,
-            Lemon,
-            Chocolate,
-            Vanilla
-        }
-        class Doughnut
-        {
-            private DoughnutType mFlavor;
-
-            public DoughnutType Flavor
-            {
-                get
-                {
-                    return mFlavor;
-                }
-                set
-                {
-                    mFlavor = value;
-                }
-            }
-            private readonly DateTime mTimeOfCreation;
-            public DateTime TimeOfCreation
-            {
-                get
-                {
-                    return mTimeOfCreation;
-                }
-            }
-            public Doughnut(DoughnutType aFlavor) // constructor 
-            {
-                mTimeOfCreation = DateTime.Now;
-                mFlavor = aFlavor;
-            }
-        }
         private DoughnutType mFlavor;
 
         public DoughnutType Flavor
@@ -58,7 +21,9 @@ namespace Mihu_Daniela_Lab2
             }
         }
         public delegate void DoughnutCompleteDelegate();
+
         public event DoughnutCompleteDelegate DoughnutComplete;
+
         DispatcherTimer doughnutTimer;
         private void InitializeComponent()
         {
@@ -98,13 +63,49 @@ namespace Mihu_Daniela_Lab2
             Flavor = dFlavor;
             switch (Flavor)
             {
-                case  DoughnutType.Glazed: Interval = 3; break;
+                case DoughnutType.Glazed: Interval = 3; break;
                 case DoughnutType.Sugar: Interval = 2; break;
                 case DoughnutType.Lemon: Interval = 5; break;
                 case DoughnutType.Chocolate: Interval = 7; break;
                 case DoughnutType.Vanilla: Interval = 4; break;
             }
             doughnutTimer.Start();
+        }
+        public enum DoughnutType
+        {
+            Glazed,
+            Sugar,
+            Lemon,
+            Chocolate,
+            Vanilla
+        }
+        class Doughnut
+        {
+            private DoughnutType mFlavor;
+            public DoughnutType Flavor
+            {
+                get
+                {
+                    return mFlavor;
+                }
+                set
+                {
+                    mFlavor = value;
+                }
+            }
+            public readonly DateTime nTimeOfCreation;
+            public DateTime TimeOfCreation
+            {
+                get
+                {
+                    return nTimeOfCreation;
+                }
+            }
+            public Doughnut(DoughnutType aFlavor) //constructor
+            {
+                nTimeOfCreation = DateTime.Now;
+                mFlavor = aFlavor;
+            }
         }
 
 
